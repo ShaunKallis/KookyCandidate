@@ -34,15 +34,18 @@
         </div>
     </nav>
     <div class="container">
-        <div class="jumbotron jumbotron-fluid" style="height:500px">
-            <div class="container">
-              <img class="float-right" src="https://www.biography.com/.image/t_share/MTE4MDAzNDEwNzg5ODI4MTEw/barack-obama-12782369-1-402.jpg" alt="" width="350px" height="400px">
+        <div class="jumbotron" style="height:500px">
+          <div class="row align-items-center">
+            <div class="col-8 text-center">
               <h1 class="display-4">Candidate Name</h1>
               <p class="lead">catchy slogan</p>
               <h1 id="count">1</h1>
-
+            </div>
+            <div class="col-2">
+              <img src="https://www.biography.com/.image/t_share/MTE4MDAzNDEwNzg5ODI4MTEw/barack-obama-12782369-1-402.jpg" alt="" width="350px" height="400px">
             </div>
           </div>
+        </div>
         {%for policy in statements%}
         <div class="jumbotron jumbotron-fluid">
           <h1 class="display-4">{{policy["title"]}}</h1>
