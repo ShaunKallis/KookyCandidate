@@ -1,9 +1,13 @@
-alert("Whats Going ON?Q!?!?@>E");
-var counter = 0;
+var cookies = document.cookie.split('=');
+var counter = parseInt(cookies[1]) ;
 var body = document.getElementsByTagName("body")[0];
-var count = document.getElementById("count");
+
 
 body.onclick = function(){
-    counter++
-    count.innerHTML = counter;
+
+    if(counter<=50){
+        counter++;
+        document.cookie = 'count='+counter;
+    }
+    
 }
