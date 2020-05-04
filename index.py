@@ -17,10 +17,13 @@ def home():
     count = request.cookies.get('count')
     return render_template('home.html', statements = statements, count = int(count))
 
-@app.route('/policies')
-def policies():
- return render_template('policies.html')
+@app.route('/policy/<id>')
+def policy(id):
+    for x in statements:
+        if x["id"] == id:
+            cur_policy = x
+    return render_template('policies.html', pol = cur_policy)
 
 @app.route('/contribute')
 def contribute():
- return render_template('contribute.html')
+    return render_template('contribute.html')

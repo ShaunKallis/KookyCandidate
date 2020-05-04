@@ -62,7 +62,7 @@
           {% elif 20<=count%}
           <p class="lead">{{policy["zalgo5"]}}</p>
           {% endif %}
-          <button class="btn btn-primary float-right">Learn More</button>
+          <a href={{ "/policy/"+policy["id"] }} class="btn btn-primary float-right">Learn More</a>
         </div>
         {% endfor %}
   
