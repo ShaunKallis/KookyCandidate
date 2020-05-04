@@ -8,6 +8,5 @@ body.onclick = function(){
         console.log(counter);
         counter++;
         document.cookie = 'count='+counter;
-        }
-    
+        } 
 }

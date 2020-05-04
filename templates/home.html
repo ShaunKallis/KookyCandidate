@@ -49,10 +49,23 @@
         {%for policy in statements%}
         <div class="jumbotron jumbotron-fluid">
           <h1 class="display-4">{{policy["title"]}}</h1>
-          <p class="lead">{{policy["text"]}}</p>
+          {%if  count<1 %}
+          <p class="lead">{{policy["text"][:100]}}</p>
+          {% elif 1<=count<5%}
+          <p class="lead">{{policy["zalgo1"]}}</p>
+          {% elif 5<=count<10%}
+          <p class="lead">{{policy["zalgo2"]}}</p>
+          {% elif 10<=count<15%}
+          <p class="lead">{{policy["zalgo3"]}}</p>
+          {% elif 15<=count<20%}
+          <p class="lead">{{policy["zalgo4"]}}</p>
+          {% elif 20<=count%}
+          <p class="lead">{{policy["zalgo5"]}}</p>
+          {% endif %}
           <button class="btn btn-primary float-right">Learn More</button>
         </div>
         {% endfor %}
+  
     </div>
 
 
@@ -62,6 +75,6 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="../static/test.js"></script>
+    <script src="../static/counter.js"></script>
   </body>
 </html>

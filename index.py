@@ -15,7 +15,7 @@ def setcookie():
 @app.route('/')
 def home():
     count = request.cookies.get('count')
-    return render_template('home.html', statements = statements, count = count)
+    return render_template('home.html', statements = statements, count = int(count))
 
 @app.route('/policies')
 def policies():
