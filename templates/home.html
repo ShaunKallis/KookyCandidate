@@ -4,15 +4,18 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/style.css">
     <title>Kooky Candidate</title></head>
 
 
   <body style= {{"background-color:"+background_color+";color:"+text_color}}>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <!-- NAV BAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-image: linear-gradient(15deg, #0000FF 0%, #FF0000 100%)">
         <div class="container">
             <a class="navbar-brand" href="#">KOOKY2020</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,45 +24,48 @@
             <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item ">
-                  <a class="nav-link" href="#">Home</a>
+                  <a class="nav-link active" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/policies">Policies</a>
+                  <a class="nav-link" href="/">Policies</a>
                 </li>
               </ul>
             </div>
         </div>
     </nav>
     
-    <div class="container">
-        <div class="jumbotron" style="height:500px">
+
+    <!-- Main Jumbotron -->
+    <div class="container" >
+        <div class="jumbotron" style= {{"height:500px;"+"background-color:"+jumbo_color}}>
           <div class="row align-items-center">
             <div class="col-8 text-center">
-              <h1 class="display-4" 
-              {%if  count>1 %}
+              <h1 class="display-4"
+              {%if  count>10 %}
               style="margin-left:1000px;"
               {% endif %}
-              >Candidate Name</h1>
+              >Donald Sanders</h1>
               <p class="lead">
-              {%if  count>1 %}
+              {%if  count>15 %}
               {{statements[0]["zalgo5"]}}
               {% else %}
-              catchy slogan
+              Eat The 1 Percent
               {% endif %}
             </p>
-              <h1>{{count}}</h1>
+            <a href="/set">reset</a>
             </div>
             <div class="col-2"
-            {%if  count>1 %}
+            {%if  count>=10 %}
               style="margin-right:300px;"
               {% endif %}
               >
+              <!-- image distortion dependent on number of clicks -->
               {%if  count<1 %}
-              <img src="/static/candidate/picture.jpg" alt="" width="350px" height="400px"></1>
+              <img src="/static/candidate/picture.jpg" class="pr-2" width="350px" height="400px"></1>
               {% elif 1<=count<5%}
-              <img src="/static/candidate/picture-10.jpg" alt="" width="350px" height="400px">
+              <img src="/static/candidate/picture-10.jpg" class="pr-2"  width="350px" height="400px">
               {% elif 5<=count<10%}
-              <img src="/static/candidate/picture-20.jpg" alt="" width="350px" height="400px">
+              <img src="/static/candidate/picture-20.jpg" class="pr-2"  width="350px" height="400px">
               {% elif 10<=count<15%}
               <img src="/static/candidate/picture-30.jpg" alt="" width="350px" height="400px">
               {% elif 15<=count<20%}
@@ -71,23 +77,33 @@
             </div>
           </div>
         </div>
+
+        <!-- Forloop to show all policies-->
         {%for policy in statements%}
-        <div class="jumbotron jumbotron-fluid">
-          <h1 class="display-4">{{policy["title"]}}</h1>
+        <div class="jumbotron jumbotron-fluid"  style= {{"background-color:"+jumbo_color}}>
+          <h1 style = "text-decoration:underline;"class="display-4 ml-3">{{policy["title"]}}</h1>
+
+          <!-- text distortion dependent on number of clicks -->
           {%if  count<1 %}
-          <p class="lead">{{policy["text"][:350]}} ...</p>
+          <p class="lead mx-3">{{policy["text"][:350]}} ...</p>
           {% elif 1<=count<5%}
-          <p class="lead">{{policy["zalgo1"][:350]}} ...</p>
+          <p class="lead mx-3">{{policy["zalgo1"][:350]}} ...</p>
           {% elif 5<=count<10%}
-          <p class="lead">{{policy["zalgo2"][:350]}} ...</p>
+          <p class="lead mx-3">{{policy["zalgo2"][:350]}} ...</p>
           {% elif 10<=count<15%}
-          <p class="lead">{{policy["zalgo3"][:350]}} ...</p>
+          <p class="lead mx-3">{{policy["zalgo3"][:350]}} ...</p>
           {% elif 15<=count<20%}
-          <p class="lead">{{policy["zalgo4"][:350]}} ...</p>
+          <p class="lead mx-3">{{policy["zalgo4"][:350]}} ...</p>
           {% elif 20<=count%}
-          <p class="lead">{{policy["zalgo5"][:350]}} ...</p>
+          <p class="lead mx-3">{{policy["zalgo5"][:350]}} ...</p>
           {% endif %}
-          <a href={{ "/policy/"+policy["id"] }} class="btn btn-primary float-right">Learn More</a>
+
+          <!-- Directs to policy route  -->
+          {%if  count>15 %}
+              {{statements[0]["zalgo5"]}}
+          {% else %}
+          <a href={{ "/policy/"+policy["id"] }} class="btn btn-primary float-right mr-5">Learn More</a>
+          {% endif %}
         </div>
         {% endfor %}
   

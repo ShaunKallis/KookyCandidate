@@ -10,8 +10,10 @@
     <title>Kooky Candidate</title>
 </head>
 <body>
+  
     <h1>{{pol["title"]}}</h1>
     <img src={{pol["image"]}}>
+    <!-- text distortion dependent on number of clicks -->
     {%if  count<1 %}
       <p>{{pol["text"]}}</p>
     {% elif 1<=count<5%}

@@ -1,3 +1,4 @@
+# list of policies which the cnadidate endersoses includes title, id, text, and zalgo twext 
 statements = [
 {
     "id":"1",
