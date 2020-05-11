@@ -26,9 +26,6 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/policies">Policies</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/contribute">CONTRIBUTE</a>
-                </li>
               </ul>
             </div>
         </div>
@@ -42,7 +39,20 @@
               <h1>{{count}}</h1>
             </div>
             <div class="col-2">
-              <img src="https://www.biography.com/.image/t_share/MTE4MDAzNDEwNzg5ODI4MTEw/barack-obama-12782369-1-402.jpg" alt="" width="350px" height="400px">
+              {%if  count<1 %}
+              <img src="/static/candidate/picture.jpg" alt="" width="350px" height="400px"></1>
+              {% elif 1<=count<5%}
+              <img src="/static/candidate/picture-10.jpg" alt="" width="350px" height="400px">
+              {% elif 5<=count<10%}
+              <img src="/static/candidate/picture-20.jpg" alt="" width="350px" height="400px">
+              {% elif 10<=count<15%}
+              <img src="/static/candidate/picture-30.jpg" alt="" width="350px" height="400px">
+              {% elif 15<=count<20%}
+              <img src="/static/candidate/picture-40.jpg" alt="" width="350px" height="400px">
+              {% elif 20<=count%}
+              <img src="/static/candidate/picture-50.jpg" alt="" width="350px" height="400px">
+              {% endif %}
+              
             </div>
           </div>
         </div>
@@ -50,17 +60,17 @@
         <div class="jumbotron jumbotron-fluid">
           <h1 class="display-4">{{policy["title"]}}</h1>
           {%if  count<1 %}
-          <p class="lead">{{policy["text"][:100]}}</p>
+          <p class="lead">{{policy["text"][:350]}} ...</p>
           {% elif 1<=count<5%}
-          <p class="lead">{{policy["zalgo1"]}}</p>
+          <p class="lead">{{policy["zalgo1"][:350]}} ...</p>
           {% elif 5<=count<10%}
-          <p class="lead">{{policy["zalgo2"]}}</p>
+          <p class="lead">{{policy["zalgo2"][:350]}} ...</p>
           {% elif 10<=count<15%}
-          <p class="lead">{{policy["zalgo3"]}}</p>
+          <p class="lead">{{policy["zalgo3"][:350]}} ...</p>
           {% elif 15<=count<20%}
-          <p class="lead">{{policy["zalgo4"]}}</p>
+          <p class="lead">{{policy["zalgo4"][:350]}} ...</p>
           {% elif 20<=count%}
-          <p class="lead">{{policy["zalgo5"]}}</p>
+          <p class="lead">{{policy["zalgo5"][:350]}} ...</p>
           {% endif %}
           <a href={{ "/policy/"+policy["id"] }} class="btn btn-primary float-right">Learn More</a>
         </div>

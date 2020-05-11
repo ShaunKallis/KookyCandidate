@@ -2,6 +2,40 @@ from flask import Flask,render_template, make_response,request
 from flask_bootstrap import Bootstrap
 from policies import statements
 
+import pyaudio
+import wave
+import time
+import sys
+import random
+
+sound_effect = ['soundEffects/1.wav', 'soundEffects/2.wav', 'soundEffects/3.wav', 'soundEffects/4.wav', 'soundEffects/5.wav', 'soundEffects/6.wav']
+
+def playIt():
+
+	wf = wave.open(random.choice(sound_effect), 'rb')
+	
+	p = pyaudio.PyAudio()
+	
+	def callback(in_data, frame_count, time_info, status):
+	    data = wf.readframes(frame_count)
+	    return (data, pyaudio.paContinue)
+	
+	stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
+		            channels=wf.getnchannels(),
+		            rate=wf.getframerate(),
+		            output=True,
+		            stream_callback=callback)
+		
+	stream.start_stream()
+
+	time.sleep(3)
+		
+	stream.stop_stream()
+	stream.close()
+	wf.close()
+		
+	p.terminate()
+
 # create an instance of the Flask class
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -14,16 +48,20 @@ def setcookie():
 
 @app.route('/')
 def home():
-    count = request.cookies.get('count')
-    return render_template('home.html', statements = statements, count = int(count))
+    count = int(request.cookies.get('count'))
+    # if count >5:
+    #     time.sleep(10)
+    #     playIt()
+    return render_template('home.html', statements = statements, count = count)
 
 @app.route('/policy/<id>')
 def policy(id):
     for x in statements:
         if x["id"] == id:
             cur_policy = x
+    # if count >5:
+    #     time.sleep(10)
+    #     playIt()
     return render_template('policies.html', pol = cur_policy)
 
-@app.route('/contribute')
-def contribute():
-    return render_template('contribute.html')
+
