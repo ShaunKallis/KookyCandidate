@@ -27,7 +27,7 @@
                   <a class="nav-link active" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="/">Policies</a>
+                  <a class="nav-link" href="#policies">Policies</a>
                 </li>
               </ul>
             </div>
@@ -54,7 +54,7 @@
             </p>
             <a href="/set">reset</a>
             </div>
-            <div class="col-2"
+            <div  class="col-2"
             {%if  count>=10 %}
               style="margin-right:300px;"
               {% endif %}
@@ -65,7 +65,7 @@
               {% elif 1<=count<5%}
               <img src="/static/candidate/picture-10.jpg" class="pr-2"  width="350px" height="400px">
               {% elif 5<=count<10%}
-              <img src="/static/candidate/picture-20.jpg" class="pr-2"  width="350px" height="400px">
+              <img src="/static/candidate/picture-20.jpg" class="pr-2" width="350px" height="400px">
               {% elif 10<=count<15%}
               <img src="/static/candidate/picture-30.jpg" alt="" width="350px" height="400px">
               {% elif 15<=count<20%}
@@ -80,7 +80,7 @@
 
         <!-- Forloop to show all policies-->
         {%for policy in statements%}
-        <div class="jumbotron jumbotron-fluid"  style= {{"background-color:"+jumbo_color}}>
+        <div id ="policies" class="jumbotron jumbotron-fluid"  style= {{"background-color:"+jumbo_color}}>
           <h1 style = "text-decoration:underline;"class="display-4 ml-3">{{policy["title"]}}</h1>
 
           <!-- text distortion dependent on number of clicks -->

@@ -58,10 +58,10 @@ def home():
     # if count >10:
     #     playIt()
 
-    background_color = "rgb("  +  str(255-(count*20))+  "," + str(255-(count*20)) + ","+str(255-(count*20))+");"
+    background_color = "rgb("  +  str(235-(count*20))+  "," + str(235-(count*20)) + ","+str(255-(count*20))+");"
     text_color = "rgb("  +  str(count*30)+  "," + str(count*20) + ","+str(count*20)+");"
     if count < 3:
-        jumbo_color = "rgba(70,70,70,.2);"
+        jumbo_color = "rgba(10,10,10,.1);"
     elif 3<=count<5:
         jumbo_color = "rgba(187,10,30,.1);"
     elif 5<=count<10:
