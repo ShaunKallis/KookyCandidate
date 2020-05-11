@@ -13,12 +13,12 @@
 <body style="background-color: rgba(0, 95, 184, 0.8)">
     <div class="container text-center text-light">
       <h1>{{pol["title"]}}</h1>
-      <img src={{pol["image"]}}>
+      <img src={{pol["image"]}} style="border-radius: 8px; width:600px;">
       <!-- text distortion dependent on number of clicks -->
-      <div style="background-color: royalblue; height: 200px;">
-        {%if  count<1 %}
+      <div  class =" p-3"style="border-radius: 8px; background-color: rgba(0, 95, 184, 0.77);">
+        {%if  count<5 %}
           <p>{{pol["text"]}}</p>
-        {% elif 1<=count<5%}
+        {% elif count==5%}
           <p>{{pol["zalgo1"]}}</p>
         {% elif 1<=count<10%} 
           <p>{{pol["zalgo2"]}}</p>

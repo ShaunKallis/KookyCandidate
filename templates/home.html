@@ -12,7 +12,12 @@
     <title>Kooky Candidate</title></head>
 
 
-  <body style= {{"background-color:"+background_color+";color:"+text_color}}>
+  <body {%if count<5%}
+      style="background-image: url('../static/candidate/KNwIAXz.jpg'); background-repeat: no-repeat; background-attachment: fixed;"
+      {% else %}
+      style={{"background-color:"+background_color+";color:"+text_color}}
+      {% endif%}
+      >
 
     <!-- NAV BAR -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-image: linear-gradient(15deg, #0000FF 0%, #FF0000 100%)">
@@ -81,7 +86,13 @@
         <!-- Forloop to show all policies-->
         {%for policy in statements%}
         <div id ="policies" class="jumbotron jumbotron-fluid"  style= {{"background-color:"+jumbo_color}}>
-          <h1 style = "text-decoration:underline;"class="display-4 ml-3">{{policy["title"]}}</h1>
+          <h1 style = "text-decoration:underline;"
+          {%if count>20%}
+          class="display-4 ml-3 float-right"
+          {% else%}
+          class="display-4 ml-3"
+          {% endif %}
+          >{{policy["title"]}}</h1>
 
           <!-- text distortion dependent on number of clicks -->
           {%if  count<1 %}

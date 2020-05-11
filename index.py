@@ -55,13 +55,13 @@ def setcookie():
 @app.route('/')
 def home():
     count = int(request.cookies.get('count'))
-    # if count >10:
-    #     playIt()
+    if count >10:
+        playIt()
 
     background_color = "rgb("  +  str(235-(count*20))+  "," + str(235-(count*20)) + ","+str(255-(count*20))+");"
     text_color = "rgb("  +  str(count*30)+  "," + str(count*20) + ","+str(count*20)+");"
     if count < 3:
-        jumbo_color = "rgba(10,10,10,.1);"
+        jumbo_color = "rgba(150,150,150,.7);"
     elif 3<=count<5:
         jumbo_color = "rgba(187,10,30,.1);"
     elif 5<=count<10:
@@ -80,8 +80,8 @@ def policy(id):
     for x in statements:
         if x["id"] == id:
             cur_policy = x
-    # if count >10:
-    #     playIt()
+    if count >10:
+        playIt()
     return render_template('policies.html', pol = cur_policy, count=count)
 
 
