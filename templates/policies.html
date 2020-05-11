@@ -20,15 +20,16 @@
           <p>{{pol["text"]}}</p>
         {% elif count==5%}
           <p>{{pol["zalgo1"]}}</p>
-        {% elif 1<=count<10%} 
+        {% elif 5<=count<10%} 
           <p>{{pol["zalgo2"]}}</p>
-        {% elif 1<=count<15%} 
+        {% elif 10<=count<15%} 
           <p>{{pol["zalgo3"]}}</p>
-        {% elif 1<=count<20%} 
+        {% elif 15<=count<20%} 
           <p>{{pol["zalgo4"]}}</p>
-        {% elif 20<=count%}
+        {% else %}
           <p>{{pol["zalgo5"]}}</p>    
       {% endif %}
+      <a href="/">Go Back</a>
       </div>
       
     </div>

@@ -1,5 +1,4 @@
 from flask import Flask,render_template, make_response,request
-from flask_bootstrap import Bootstrap
 from policies import statements
 
 import pyaudio
@@ -42,7 +41,6 @@ def playIt():
 
 # create an instance of the Flask class
 app = Flask(__name__)
-bootstrap = Bootstrap(app)
 
 # set route
 @app.route("/set")
