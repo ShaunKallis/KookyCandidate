@@ -30,15 +30,30 @@
             </div>
         </div>
     </nav>
+    
     <div class="container">
         <div class="jumbotron" style="height:500px">
           <div class="row align-items-center">
             <div class="col-8 text-center">
-              <h1 class="display-4">Candidate Name</h1>
-              <p class="lead">catchy slogan</p>
+              <h1 class="display-4" 
+              {%if  count>1 %}
+              style="margin-left:1000px;"
+              {% endif %}
+              >Candidate Name</h1>
+              <p class="lead">
+              {%if  count>1 %}
+              {{statements[0]["zalgo5"]}}
+              {% else %}
+              catchy slogan
+              {% endif %}
+            </p>
               <h1>{{count}}</h1>
             </div>
-            <div class="col-2">
+            <div class="col-2"
+            {%if  count>1 %}
+              style="margin-right:300px;"
+              {% endif %}
+              >
               {%if  count<1 %}
               <img src="/static/candidate/picture.jpg" alt="" width="350px" height="400px"></1>
               {% elif 1<=count<5%}

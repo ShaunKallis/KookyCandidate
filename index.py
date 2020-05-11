@@ -15,11 +15,12 @@ def playIt():
 	wf = wave.open(random.choice(sound_effect), 'rb')
 	
 	p = pyaudio.PyAudio()
-	
+	time.sleep(5)
+
 	def callback(in_data, frame_count, time_info, status):
 	    data = wf.readframes(frame_count)
 	    return (data, pyaudio.paContinue)
-	
+
 	stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
 		            channels=wf.getnchannels(),
 		            rate=wf.getframerate(),
@@ -28,7 +29,7 @@ def playIt():
 		
 	stream.start_stream()
 
-	time.sleep(3)
+	time.sleep(4)
 		
 	stream.stop_stream()
 	stream.close()
@@ -50,10 +51,11 @@ def setcookie():
 def home():
     count = int(request.cookies.get('count'))
     # if count >5:
-    #     time.sleep(10)
     #     playIt()
+
     background_color = "rgb("  +  str(255-(count*10))+  "," + str(255-(count*10)) + ","+str(255-(count*10))+");"
     text_color = "rgb("  +  str(count*10)+  "," + str(count*10) + ","+str(count*10)+");"
+
     return render_template('home.html', statements = statements, count = count, background_color = background_color, text_color = text_color)
 
 @app.route('/policy/<id>')
@@ -63,8 +65,7 @@ def policy(id):
         if x["id"] == id:
             cur_policy = x
     # if count >5:
-    #     time.sleep(10)
     #     playIt()
-    return render_template('policies.html', pol = cur_policy)
+    return render_template('policies.html', pol = cur_policy, count=count)
 
 
