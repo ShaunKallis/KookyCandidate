@@ -52,10 +52,13 @@ def home():
     # if count >5:
     #     time.sleep(10)
     #     playIt()
-    return render_template('home.html', statements = statements, count = count)
+    background_color = "rgb("  +  str(255-(count*10))+  "," + str(255-(count*10)) + ","+str(255-(count*10))+");"
+    text_color = "rgb("  +  str(count*10)+  "," + str(count*10) + ","+str(count*10)+");"
+    return render_template('home.html', statements = statements, count = count, background_color = background_color, text_color = text_color)
 
 @app.route('/policy/<id>')
 def policy(id):
+    count = int(request.cookies.get('count'))
     for x in statements:
         if x["id"] == id:
             cur_policy = x
